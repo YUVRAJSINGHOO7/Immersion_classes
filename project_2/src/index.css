@@ -1,27 +1,28 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f0f0;
 }
 
 .container {
-  max-width: 600px;
-  margin: 60px auto;
+  max-width: 800px;
+  margin: 50px auto;
   padding: 20px;
   background: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
   color: #333;
+  margin-bottom: 20px;
 }
 
 .input-area {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .input-area input {
@@ -32,36 +33,44 @@ h1 {
   border: 1px solid #ccc;
 }
 
-.input-area button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4caf50;
+.add-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  font-weight: bold;
   color: white;
+  background-color: #4caf50;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.input-area button:hover {
-  background-color: #45a049;
+.add-btn:hover {
+  background-color: #43a047;
 }
 
-.notes {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
 }
 
-.note {
-  background-color: #fffacd;
-  padding: 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.note-box {
+  background-color: #fff9c4;
   border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: break-word;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.note:hover {
-  background-color: #ffe680;
+.note-box:hover {
+  background-color: #fff176;
 }

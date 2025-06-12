@@ -29,11 +29,11 @@ function App() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Type a note..."
+          placeholder="Write a note..."
         />
-        <button onClick={addNote}>Add</button>
+        <button className="add-btn" onClick={addNote}>+</button>
       </div>
-      <div className="notes">
+      <div className="notes-grid">
         {notes.map((note, index) => (
           <Note key={index} text={note} onDoubleClick={() => removeNote(index)} />
         ))}

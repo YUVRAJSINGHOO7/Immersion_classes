@@ -2,7 +2,7 @@ import React from 'react';
 
 function Note({ text, onDoubleClick }) {
   return (
-    <div className="note" onDoubleClick={onDoubleClick}>
+    <div className="note-box" onDoubleClick={onDoubleClick}>
       {text}
     </div>
   );
