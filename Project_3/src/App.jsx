@@ -4,8 +4,8 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
+  const [sortBy, setSortBy] = useState("");
 
-  // Fetch all products initially
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
@@ -34,9 +34,29 @@ export default function App() {
     }
   };
 
+  const handleSort = (e) => {
+    const value = e.target.value;
+    setSortBy(value);
+
+    const sortedProducts = [...products];
+
+    if (value === "price-asc") {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (value === "price-desc") {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    } else if (value === "rating-asc") {
+      sortedProducts.sort((a, b) => a.rating - b.rating);
+    } else if (value === "rating-desc") {
+      sortedProducts.sort((a, b) => b.rating - a.rating);
+    }
+
+    setProducts(sortedProducts);
+  };
+
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
       <h2>Product Search</h2>
+
       <form onSubmit={handleSearch} style={{ marginBottom: "20px" }}>
         <input
           type="text"
@@ -52,7 +72,24 @@ export default function App() {
           Search
         </button>
       </form>
+
+      <div style={{ marginBottom: "20px" }}>
+        <label>Sort by: </label>
+        <select
+          onChange={handleSort}
+          value={sortBy}
+          style={{ padding: "10px", marginLeft: "10px" }}
+        >
+          <option value="">-- Select --</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-asc">Rating: Low to High</option>
+          <option value="rating-desc">Rating: High to Low</option>
+        </select>
+      </div>
+
       {error && <p style={{ color: "red" }}>{error}</p>}
+
       <div
         style={{
           display: "grid",
@@ -77,6 +114,9 @@ export default function App() {
             <h4>{product.title}</h4>
             <p>
               <strong>Price:</strong> ${product.price}
+            </p>
+            <p>
+              <strong>Rating:</strong> {product.rating}
             </p>
           </div>
         ))}
